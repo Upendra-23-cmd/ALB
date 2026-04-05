@@ -7,7 +7,7 @@ This project provisions a production-grade AWS infrastructure using Terraform. I
 
 ## 🏗️ Architecture
 
-'''
+```
 Internet
 │
 ┌────────────────────┐
@@ -32,12 +32,12 @@ VPC (10.0.0.0/16)
 ├── Internet Gateway → Public Route Table
 └── NAT Gateway → Private Route Table
 
-'''
+```
 ---
 
 ## 📁 Project Structure
 
-'''
+```
 ├── main.tf
 ├── variables.tf
 ├── outputs.tf
@@ -52,7 +52,7 @@ VPC (10.0.0.0/16)
 │
 └── README.md
 
-'''
+```
 ---
 
 ## 🔧 Infrastructure Components
@@ -99,24 +99,24 @@ VPC (10.0.0.0/16)
 ## ▶️ Deployment Steps
 
 ### 1. Initialize
-'''
+```
 terraform init
-'''
+```
 
 ### 2. Validate
-'''
+```
 terraform validate
-'''
+```
 
 ### 3. Plan
-'''
+```
 terraform plan
-'''
+```
 
 ### 4. Apply
-'''
+```
 terraform apply
-'''
+```
 
 ---
 
