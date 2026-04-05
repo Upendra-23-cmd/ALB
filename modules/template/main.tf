@@ -1,17 +1,21 @@
-resource "aws_template" "my_template" {
-    ami_id = var.ami_id
+resource "aws_launch_template" "my_template" {
+    name_prefix = "my-template-"
+    image_id = var.ami_id
     instance_type = var.instance_type
     key_name = aws_key_pair.key_pair.key_name
 
-    root_volume {
-        size = var.root_volume_size
-        type = var.root_volume_type
+    block_device_mappings {
+        device_name = "/dev/xvda"
+        ebs {
+            volume_size = var.root_volume_size
+            volume_type = var.root_volume_type
+        }
     }
 
-    network_interface {
+    network_interfaces {
         device_index = 0
-        subnet_id = aws_subnet.my_subnet.id
-        security_group = aws_security_group.my_sg.id
+        subnet_id = var.subnet_id[0]
+        security_groups = [aws_security_group.my_sg.id]
     }
 
         user_data = base64encode(<<-EOF

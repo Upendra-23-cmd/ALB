@@ -1,7 +1,7 @@
 resource "aws_security_group" "my_sg" {
     name = "my-sg"
     description = "Security group for my ALB"
-    vpc_id = aws_vpc.my_vpc.id
+    vpc_id = var.vpc_id
 
     # INBOUND RULES
     ingress {

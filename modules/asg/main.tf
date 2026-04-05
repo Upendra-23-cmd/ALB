@@ -1,0 +1,30 @@
+resource "aws_autoscaling_group" "my_asg" {
+    name = "my-asg"
+    max_size = 3
+    min_size = 2
+    desired_capacity = 1
+    launch_template {
+        id = var.launch_template_id
+        version = "$Latest"
+    }
+
+    vpc_zone_identifier = var.subnet_ids
+    target_group_arns = var.target_group_arns
+
+    }
+    
+resource "aws_autoscaling_policy" "cpu_utilization_policy" {
+  name                   = "cpu-utilization-policy"
+  policy_type            = "TargetTrackingScaling"
+  autoscaling_group_name = var.autoscaling_group_name
+
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+
+    target_value = 50
+  }
+
+  estimated_instance_warmup = 300
+}
