@@ -146,7 +146,9 @@ alb_dns_name = http://<your-alb-dns>
 ---
 
 ## 🧹 Cleanup
+```
 terraform destroy
+```
 
 ---
 
