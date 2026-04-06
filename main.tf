@@ -30,7 +30,6 @@ module "alb" {
     vpc_id = module.my_vpc.vpc_id
     security_groups = [module.template.my_sg]
     subnet_ids = module.my_vpc.subnet_id
-    target_group_arn = module.alb.target_group_arn
 }
 
 module "template" {
