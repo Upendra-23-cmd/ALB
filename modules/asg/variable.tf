@@ -22,5 +22,4 @@ variable "autoscaling_group_name" {
     description = "Name of the Auto Scaling group"
     type        = string
     default     = "my-asg"
-  
 }

@@ -2,7 +2,7 @@ resource "aws_autoscaling_group" "my_asg" {
     name = "my-asg"
     max_size = 3
     min_size = 2
-    desired_capacity = 1
+    desired_capacity = 2
     launch_template {
         id = var.launch_template_id
         version = "$Latest"
@@ -25,6 +25,6 @@ resource "aws_autoscaling_policy" "cpu_utilization_policy" {
 
     target_value = 50
   }
-
+    depends_on = [ aws_autoscaling_group.my_asg ]
   estimated_instance_warmup = 300
 }

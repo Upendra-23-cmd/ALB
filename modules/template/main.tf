@@ -13,6 +13,7 @@ resource "aws_launch_template" "my_template" {
     }
 
     network_interfaces {
+        associate_public_ip_address = true
         device_index = 0
         subnet_id = var.subnet_id[0]
         security_groups = [aws_security_group.my_sg.id]

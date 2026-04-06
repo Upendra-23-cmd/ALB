@@ -13,8 +13,4 @@ variable "subnet_ids" {
     type        = list(string)
 }
 
-variable "target_group_arn" {
-    description = "ARN of the target group to attach to the ALB listener"
-    type        = string
-}
 
