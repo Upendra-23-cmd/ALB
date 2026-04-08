@@ -7,7 +7,7 @@ resource "aws_autoscaling_group" "my_asg" {
         id = var.launch_template_id
         version = "$Latest"
     }
-
+    depends_on = [ var.vpc_id ]
     vpc_zone_identifier = var.subnet_ids
     target_group_arns = var.target_group_arns
 

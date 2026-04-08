@@ -19,14 +19,15 @@ resource "aws_launch_template" "my_template" {
         security_groups = [aws_security_group.my_sg.id]
     }
 
-        user_data = base64encode(<<-EOF
-                    #!/bin/bash
-                    sudo apt update -y
-                    sudo apt install nginx -y
-                    sudo systemctl start nginx 
-                    sudo systemctl enable nginx
-                    EOF
-        )
+       user_data =base64encode(<<-EOF
+                #!/bin/bash
+                sudo -i
+                sudo apt update -y
+                sudo apt install nginx -y
+                sudo systemctl start nginx 
+                sudo systemctl enable nginx
+                EOF
+       )
 
         tags = {
             Name = "my-template"
